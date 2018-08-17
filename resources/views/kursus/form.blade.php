@@ -1,5 +1,9 @@
 <legend>Daftar / Kemaskini Kursus</legend>
 
+@foreach($errors->all() as $err) 
+	{{ $err }}
+@endforeach
+
 <form method="post" action="{{ url('kursus/save') }}">
 	{{ csrf_field() }}
 	<input type="hidden" name="id" value="{{ $kursus->id }}">

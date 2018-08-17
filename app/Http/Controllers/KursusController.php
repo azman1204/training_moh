@@ -35,7 +35,7 @@ class KursusController extends Controller {
 		// validation
 		$data  = $req->all();
 		$rules = [
-			'title'  => 'required|min:5',
+			'tajuk'  => 'required|min:5',
 			'lokasi' => 'required',
 			'tarikh' => 'required'
 		];
@@ -48,7 +48,8 @@ class KursusController extends Controller {
 			->withErrors($v);
 		} else {
 			// semua validation ok
-			return redirect('kursus/list');
+			$kursus->save();
+			return redirect('kursus/listing');
 		}
 	}
 
