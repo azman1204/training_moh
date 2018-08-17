@@ -1,5 +1,6 @@
 <legend>Senarai Kursus</legend>
 
+<a href="{{ url('kursus/add') }}">Tambah Kursus</a>
 <table>
 	<tr>
 		<td>Bil</td>
@@ -10,7 +11,7 @@
 	</tr>
 	@foreach ($kursus as $k)
 	<tr>
-		<td></td>
+		<td>{{ $loop->iteration }}</td>
 		<td>{{ $k->tajuk }}</td>
 		<td>{{ $k->tarikh }}</td>
 		<td>{{ $k->lokasi }}</td>

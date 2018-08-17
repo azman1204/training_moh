@@ -11,7 +11,8 @@ class KursusController extends Controller {
 	}
 
 	function add() {
-
+		$kursus = new Kursus();
+		return view('kursus.form')->with('kursus',$kursus);
 	}
 
 	function save() {
