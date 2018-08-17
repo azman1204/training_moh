@@ -6,8 +6,19 @@ use Illuminate\Http\Request;
 
 class KursusController extends Controller {
 	// list all kursus
-	function listing() {
-		$kursus = Kursus::all();
+	function listing(Request $req) {
+		if ($req->has('tajuk')) {
+			// search
+			$tajuk = $req->input('tajuk');
+			$lokasi = $req->input('lokasi');
+			$kursus = Kursus::where('tajuk', 'like', "%$tajuk%")
+			->where('lokasi', 'like', "%$lokasi%")
+			->get();
+		} else {
+			// list all
+			$kursus = Kursus::all();
+		}
+		
 		//dd($kursus);
 		return view('kursus.listing')->with('kursus', $kursus);
 	}

@@ -1,5 +1,6 @@
 <?php
 Route::get('kursus/listing', 'KursusController@listing');
+Route::post('kursus/listing', 'KursusController@listing');
 Route::get('kursus/add', 'KursusController@add');
 Route::get('kursus/delete/{id}', 'KursusController@delete');
 Route::get('kursus/edit/{id}', 'KursusController@edit');

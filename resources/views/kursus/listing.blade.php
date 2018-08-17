@@ -2,7 +2,9 @@
 @section('body')
 <legend>Senarai Kursus</legend>
 
+<!-- search form -->
 <form method="post" action="{{ url('kursus/listing') }}">
+	{{ csrf_field() }}
 	Tajuk:  <input type="text" name="tajuk" class="form-control">
 	Lokasi: <input type="text" name="lokasi" class="form-control">
 	<input type="submit" value="Search" class="btn btn-primary">
