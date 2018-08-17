@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use App\Kursus;
+use Validator;
+use Illuminate\Http\Request;
 
 class KursusController extends Controller {
 	// list all kursus
@@ -15,8 +17,39 @@ class KursusController extends Controller {
 		return view('kursus.form')->with('kursus',$kursus);
 	}
 
-	function save() {
+	// semua data dr. form disubmit ke sini
+	function save(Request $req) {
+		$id = $req->input('id');
+		if (! empty($id)) {
+			// update
+			$kursus = Kursus::find($id);
+		} else {
+			// insert
+			$kursus = new Kursus();
+		}
 
+		$kursus->tajuk  = $req->input('tajuk');
+		$kursus->lokasi = $req->input('lokasi');
+		$kursus->tarikh = $req->input('tarikh');
+
+		// validation
+		$data  = $req->all();
+		$rules = [
+			'title'  => 'required|min:5',
+			'lokasi' => 'required',
+			'tarikh' => 'required'
+		];
+		$v = Validator::make($data, $rules);
+		// if (! $v->passes())
+		if ($v->fails()) {
+			// show back the form with prev value
+			return view('kursus.form')
+			->with('kursus', $kursus)
+			->withErrors($v);
+		} else {
+			// semua validation ok
+			return redirect('kursus/list');
+		}
 	}
 
 	function delete($id) {
