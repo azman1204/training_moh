@@ -15,7 +15,10 @@
 		<td>{{ $k->tajuk }}</td>
 		<td>{{ $k->tarikh }}</td>
 		<td>{{ $k->lokasi }}</td>
-		<td></td>
+		<td>
+			<a href="{{ url('kursus/edit', [$k->id]) }}">Edit</a> |
+			<a href="{{ url('kursus/delete', [$k->id]) }}">Delete</a>
+		</td>
 	</tr>
 	@endforeach
 </table>

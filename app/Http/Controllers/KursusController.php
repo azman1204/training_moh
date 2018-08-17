@@ -54,10 +54,13 @@ class KursusController extends Controller {
 	}
 
 	function delete($id) {
-
+		$kursus = Kursus::find($id);
+		$kursus->delete();
+		return redirect('kursus/listing');
 	}
 
 	function edit($id) {
-
+		$kursus = Kursus::find($id);
+		return view('kursus.form')->with('kursus', $kursus);
 	}
 }
