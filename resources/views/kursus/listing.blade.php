@@ -17,6 +17,7 @@
 		<td>Tajuk</td>
 		<td>Tarikh</td>
 		<td>Lokasi</td>
+		<td>Peserta</td>
 		<td>Tindakan</td>
 	</tr>
 	@foreach ($kursus as $k)
@@ -25,6 +26,11 @@
 		<td>{{ $k->tajuk }}</td>
 		<td>{{ $k->tarikh }}</td>
 		<td>{{ $k->lokasi }}</td>
+		<td>
+			@foreach ($k->peserta as $peserta)
+				<li>{{ $peserta->user->name }}</li>
+			@endforeach
+		</td>
 		<td>
 			<a href="{{ url('kursus/edit', [$k->id]) }}">Edit</a> |
 			<a href="{{ url('kursus/delete', [$k->id]) }}">Delete</a>
