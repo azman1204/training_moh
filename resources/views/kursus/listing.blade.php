@@ -10,7 +10,9 @@
 	<input type="submit" value="Search" class="btn btn-primary">
 </form>
 
-<a href="{{ url('kursus/add') }}">Tambah Kursus</a>
+<a href="{{ url('kursus/add') }}" class="btn btn-success btn-sm">Tambah Kursus</a>
+<a href="{{ url('kursus/excel') }}" class="btn btn-success btn-sm">Download Excel</a>
+
 <table class="table table-striped">
 	<tr>
 		<td>Bil</td>

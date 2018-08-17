@@ -1,4 +1,5 @@
 <?php
+Route::get('kursus/excel', 'KursusController@excel');
 Route::get('kursus/listing', 'KursusController@listing');
 Route::post('kursus/listing', 'KursusController@listing');
 Route::get('kursus/add', 'KursusController@add');

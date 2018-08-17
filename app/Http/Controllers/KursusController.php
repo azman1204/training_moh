@@ -2,9 +2,20 @@
 namespace App\Http\Controllers;
 use App\Kursus;
 use Validator;
+use View;
 use Illuminate\Http\Request;
 
 class KursusController extends Controller {
+	// download data as excel
+	function excel() {
+		$kursus = Kursus::all();
+		$view = View::make('kursus.excel', ['kursus' => $kursus]); // return view()
+		$html = $view->render();
+		return response($html)
+		->header('Content-Type', 'application/vnd.ms-excel')
+		->header('Content-Disposition', 'attachment; filename="data.xls"');
+	}
+
 	// list all kursus
 	function listing(Request $req) {
 		if ($req->has('tajuk')) {
