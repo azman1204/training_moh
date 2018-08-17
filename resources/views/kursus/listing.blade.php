@@ -1,7 +1,15 @@
+@extends('layout.main')
+@section('body')
 <legend>Senarai Kursus</legend>
 
+<form method="post" action="{{ url('kursus/listing') }}">
+	Tajuk:  <input type="text" name="tajuk" class="form-control">
+	Lokasi: <input type="text" name="lokasi" class="form-control">
+	<input type="submit" value="Search" class="btn btn-primary">
+</form>
+
 <a href="{{ url('kursus/add') }}">Tambah Kursus</a>
-<table>
+<table class="table table-striped">
 	<tr>
 		<td>Bil</td>
 		<td>Tajuk</td>
@@ -22,3 +30,4 @@
 	</tr>
 	@endforeach
 </table>
+@endsection

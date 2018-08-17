@@ -1,3 +1,5 @@
+@extends('layout.main')
+@section('body')
 <legend>Daftar / Kemaskini Kursus</legend>
 
 @foreach($errors->all() as $err) 
@@ -12,3 +14,4 @@
 	Tarikh : <input type="date" name="tarikh" value="{{ $kursus->tarikh }}">
 	<input type="submit" value="Submit">
 </form>
+@endsection
